@@ -16,7 +16,7 @@ public class GenericStackClass <T> {
      * @param stacks the array of elements that represents the stack
      * @param counter the counter that keeps track of the current position in the stack
      */
-    GenericStackClass(T[] stacks, int counter) {
+    public GenericStackClass(T[] stacks, int counter) {
         this.stacks = stacks;
         this.counter = counter;
     }
@@ -25,11 +25,11 @@ public class GenericStackClass <T> {
      * Constructor to initialize the stack with a provided array and set the counter to 0.
      * @param stacks the array of elements that represents the stack
      */
-    GenericStackClass(T[] stacks) {
+    public GenericStackClass(T[] stacks) {
         this(stacks, 0);
     }
 
-    GenericStackClass() {
+    public GenericStackClass() {
         this((T[]) new Object[10], 0);
     }
 
@@ -37,7 +37,7 @@ public class GenericStackClass <T> {
      * Constructor to initialize the stack with a given counter and a null array.
      * @param counter the counter that keeps track of the current position in the stack
      */
-    GenericStackClass(int counter) {
+    public GenericStackClass(int counter) {
         this(null, counter);
     }
 

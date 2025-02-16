@@ -64,11 +64,11 @@ public class NumberStackTest {
             System.out.println("An unexpected Error: " + e.getMessage());
         }
 
-        // Additional edge case: Attempting to pop from an empty stack
+        // Additional Exception case
         try {
             numberStack2.pop();
             numberStack2.pop();
-            numberStack2.pop(); // This should trigger a StackEmptyException
+            numberStack2.pop(); // This should do a StackEmptyException
         } catch (StackEmptyException e) {
             System.out.println("Error: " + e.getMessage()); // Expected: Error for empty stack
         }
