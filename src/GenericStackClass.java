@@ -29,11 +29,8 @@ public class GenericStackClass <T> {
         this(stacks, 0);
     }
 
-    /**
-     * Default constructor that initializes the stack with a null array and counter set to 0.
-     */
     GenericStackClass() {
-        this(null, 0);
+        this((T[]) new Object[10], 0);
     }
 
     /**
@@ -47,8 +44,10 @@ public class GenericStackClass <T> {
     /**
      * adding an element or stack into the array stack
      * @param item the element or stack, which will be added
+     * @throws NullPointerException for null elements
+     * @throws StackFullException for overflowed stack array
      */
-    public void push(T item) {
+    public void push(T item) throws NullPointerException, StackFullException{
         // Check if the item is null to prevent adding null to the stack
         if (item == null) throw new NullPointerException("Null items cannot be added to the stack.");
 
@@ -57,16 +56,47 @@ public class GenericStackClass <T> {
             throw new StackFullException("Stack overflow you can't add anything!");
         }
 
-        // Add the item to the stack and increment the counter
+        // Add the item to the stack and plus the counter
         this.stacks[this.counter++] = item;
     }
+
+    /**
+     * adding an element or stack into the array stack.
+     * If there ist no place left, the stack array becomes bigger
+     * @param item the element or stack, which will be added
+     * @throws NullPointerException for null elements
+     */
+    public void pushAutomatic(T item) throws NullPointerException {
+        // Check if the item is null to prevent adding null to the stack
+        if (item == null) throw new NullPointerException("Null items cannot be added to the stack.");
+
+        // Check if the stack is full and make it bigger it if necessary
+        if (counter >= stacks.length) {
+            makeBigger();
+        }
+
+        // Add the item to the stack and plus the counter
+        this.stacks[this.counter++] = item;
+    }
+
+    /**
+     * it makes the stack array bigger for adding more elements
+     */
+    private void makeBigger() {
+        // Double the size of the stack array
+        T[] newStacks = (T[]) new Object[stacks.length * 2]; // Create a new array with double the size
+        System.arraycopy(stacks, 0, newStacks, 0, stacks.length); // Copy the existing elements to the new array
+        stacks = newStacks; // Point to the newly bigger array
+    }
+
 
     /**
      * removing and returnin the last added element or stack
      * of the stack array
      * @return the last added element
+     * @throws StackEmptyException for empty stack or stack array
      */
-    public T pop() {
+    public T pop() throws StackEmptyException{
         // Check if the stack is empty
         if (this.counter == 0) {
             throw new StackEmptyException("The stack is empty, cannot pop or return!");
@@ -86,8 +116,9 @@ public class GenericStackClass <T> {
     /**
      * returning the last added element without removing.
      * @return the last added element
+     * @throws StackEmptyException for empty stack or stack array
      */
-    public T peek() {
+    public T peek() throws StackEmptyException {
         // Check if the stack is empty
         if (this.counter == 0) {
             throw new StackEmptyException("The stack is empty, cannot peek!");
@@ -104,10 +135,10 @@ public class GenericStackClass <T> {
     /**
      * A methode, with return a String list of the stack array.
      * @return output list of the stack array
+     * @throws StackEmptyException for empty stack or stack array
      */
-    public String list() {
+    public String list() throws StackEmptyException {
         if (this.counter == 0) {
-            throw new StackEmptyException("The stack is empty, nothing to list!");
         }
 
         String output = "";
