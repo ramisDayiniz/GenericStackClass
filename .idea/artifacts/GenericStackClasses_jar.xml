@@ -5,7 +5,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/jar/META-INF/MANIFEST.MF" />
       </element>
-      <element id="module-output" name="GenericStackClasses" />
+      <element id="module-output" name="GenericStackClassesGenericMethodes" />
     </root>
   </artifact>
 </component>

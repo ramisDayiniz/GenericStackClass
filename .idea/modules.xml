@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/GenericStackClasses.iml" filepath="$PROJECT_DIR$/.idea/GenericStackClasses.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/GenericStackClassesGenericMethodes.iml" filepath="$PROJECT_DIR$/.idea/GenericStackClassesGenericMethodes.iml" />
     </modules>
   </component>
 </project>
