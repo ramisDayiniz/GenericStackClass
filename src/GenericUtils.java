@@ -1,3 +1,4 @@
+import java.lang.Number;
 /**
  * Utility class for generic array operations, providing methods to reverse an array
  * and convert it to a formatted string representation.
@@ -13,7 +14,7 @@ public class GenericUtils {
      * @throws NullPointerException  If the input array is null or empty.
      * @throws StackEmptyException   If any element in the array is null or empty.
      */
-    public static <T> T[] reverse(T[] stackArray) {
+    public static <T> T[] reverse(T[] stackArray) throws NullPointerException, StackEmptyException{
         // Null check
         if (stackArray == null || stackArray.length == 0) {
             throw new NullPointerException();
@@ -38,6 +39,8 @@ public class GenericUtils {
         return stackArray;
     }
 
+
+
     /**
      * Converts the provided array to a space-separated string representation.
      * @param <T> The type of the array elements.
@@ -46,7 +49,7 @@ public class GenericUtils {
      * @throws NullPointerException  If the input array is null or empty.
      * @throws StackEmptyException   If any element in the array is null.
      */
-    public static <T> String getArrayString(T[] stackArray) {
+    public static <T> String getArrayString(T[] stackArray) throws NullPointerException, StackEmptyException{
         // Null check
         if (stackArray == null || stackArray.length == 0) {
             throw new NullPointerException();
@@ -54,10 +57,31 @@ public class GenericUtils {
         // Output of Array in String
         StringBuilder stringBuilder = new StringBuilder();
         // till stackArray is finished
-        for (T element : stackArray) {
-            if(element == null) throw new StackEmptyException("Stack is empty");
-            stringBuilder.append(element).append(" ");
+        for (T stack : stackArray) {
+            if(stack == null) throw new StackEmptyException("Stack is empty");
+            stringBuilder.append(stack).append(" ");
         }
         return stringBuilder.toString();
+    }
+
+    /**
+     * Sums all the elements of an array of type T, where is a subclass of Number.
+     * The method calculates the sum by converting each element to a double.
+     * @param <T> The generic type that must extend Number.
+     * @param stackArray The array of numbers to be summed.
+     * @return The sum of all elements in the array as a double.
+     * @throws NullPointerException If the input array is null or empty.
+     * @throws StackEmptyException If any element in the array is null.
+     */
+    public static <T extends Number> double sum(T[] stackArray) throws NullPointerException, StackEmptyException{
+        if (stackArray == null || stackArray.length == 0) {
+            throw new NullPointerException();
+        }
+        double sum = 0.0;
+        for (T stack : stackArray) {
+            if (stack == null) throw new StackEmptyException("Stack is empty");
+            sum += stack.doubleValue();
+        }
+        return sum;
     }
 }

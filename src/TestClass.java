@@ -136,5 +136,59 @@ public class TestClass {
         } catch (StackEmptyException e) {
             System.out.println("Error: " + e.getMessage()); // Expected: Error for empty stack
         }
+
+
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------\n");
+
+        String[] textArray = {"one", "two", "three"};
+        try {
+            System.out.println("Original Array: " + GenericUtils.getArrayString(textArray));
+
+            // Switch Array indexes
+            GenericUtils.reverse(textArray);
+
+            System.out.println("Switched Array: " + GenericUtils.getArrayString(textArray));
+        } catch (NullPointerException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (StackEmptyException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        // Integer Array
+        Integer[] intArray = {1, 2, 3, 4, 5};
+        try {
+            double sumInt = GenericUtils.sum(intArray);
+            System.out.println("Sum of Integer array: " + sumInt);  // Expected: 15.0
+        } catch (NullPointerException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (StackEmptyException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        // Double-Array
+        Double[] doubleArray = {1.5, 2.5, 3.0, 4.5};
+        try {
+            double sumDouble = GenericUtils.sum(doubleArray);
+            System.out.println("Sum of Double array: " + sumDouble);  // Expected: 11.5
+        } catch (NullPointerException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (StackEmptyException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        // Float-Array
+        Float[] floatArray = {1.0f, 2.0f, 3.0f};
+        try {
+            double sumFloat = GenericUtils.sum(floatArray);
+            System.out.println("Sum of Float array: " + sumFloat);  // Expected: 6.0
+        } catch (NullPointerException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (StackEmptyException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 }
